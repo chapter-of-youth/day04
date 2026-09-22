@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Preview</title>
+  <style>
+    body { font-family: sans-serif; max-width: 480px; margin: 40px auto; }
+    li { padding: 8px 0; border-bottom: 1px solid #ddd; }
+    #status { color: #888; }
+  </style>
+</head>
+<body>
+  <h1>test_todos 목록</h1>
+  <p id="status">불러오는 중...</p>
+  <ul id="todo-list"></ul>
+
+  <script>
+    const SUPABASE_URL = "https://shqfklmsavgrfdkhlrof.supabase.co/rest/v1/test_todos";
+    const SUPABASE_ANON_KEY = "sb_publishable_c1SSRQ62eB_iju5I0PSlpQ_UOfkjVgh";
+
+    async function loadTodos() {
+      const statusEl = document.getElementById("status");
+      const listEl = document.getElementById("todo-list");
+
+      try {
+        const res = await fetch(SUPABASE_URL + "?select=*", {
+          headers: {
+            apikey: SUPABASE_ANON_KEY,
+            Authorization: "Bearer " + SUPABASE_ANON_KEY
+          }
+        });
+
+        if (!res.ok) {
+          throw new Error("HTTP " + res.status);
+        }
+
+        const todos = await res.json();
+
+        if (todos.length === 0) {
+          statusEl.textContent = "데이터가 없습니다.";
+          return;
+        }
+
+        statusEl.remove();
+        todos.forEach(todo => {
+          const li = document.createElement("li");
+          li.textContent = JSON.stringify(todo);
+          listEl.appendChild(li);
+        });
+      } catch (err) {
+        statusEl.textContent = "불러오기 실패: " + err.message;
+      }
+    }
+
+    loadTodos();
+  </script>
+</body>
+</html>
