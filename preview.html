@@ -5,7 +5,11 @@
   <title>Preview</title>
   <style>
     body { font-family: sans-serif; max-width: 480px; margin: 40px auto; }
-    li { padding: 8px 0; border-bottom: 1px solid #ddd; }
+    ul { list-style: none; padding: 0; }
+    li { padding: 10px 0; border-bottom: 1px solid #ddd; display: flex; justify-content: space-between; align-items: center; }
+    .title { font-weight: bold; }
+    .title.done { text-decoration: line-through; color: #999; }
+    .meta { color: #888; font-size: 0.85em; }
     #status { color: #888; }
   </style>
 </head>
@@ -44,7 +48,17 @@
         statusEl.remove();
         todos.forEach(todo => {
           const li = document.createElement("li");
-          li.textContent = JSON.stringify(todo);
+
+          const titleEl = document.createElement("span");
+          titleEl.className = "title" + (todo.done ? " done" : "");
+          titleEl.textContent = todo.title;
+
+          const metaEl = document.createElement("span");
+          metaEl.className = "meta";
+          metaEl.textContent = "수량 " + todo.amount + " · 마감 " + todo.due_date;
+
+          li.appendChild(titleEl);
+          li.appendChild(metaEl);
           listEl.appendChild(li);
         });
       } catch (err) {
