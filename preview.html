@@ -3,20 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Preview</title>
-  <style>
-    body { font-family: sans-serif; max-width: 480px; margin: 40px auto; }
-    ul { list-style: none; padding: 0; }
-    li { padding: 10px 0; border-bottom: 1px solid #ddd; display: flex; justify-content: space-between; align-items: center; }
-    .title { font-weight: bold; }
-    .title.done { text-decoration: line-through; color: #999; }
-    .meta { color: #888; font-size: 0.85em; }
-    #status { color: #888; }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>test_todos 목록</h1>
-  <p id="status">불러오는 중...</p>
-  <ul id="todo-list"></ul>
+  <div class="card">
+    <h1>test_todos 목록</h1>
+    <p id="status">불러오는 중...</p>
+    <ul id="todo-list"></ul>
+    <div class="nav-links">
+      <a href="index.html">index로 돌아가기</a>
+    </div>
+  </div>
 
   <script>
     const SUPABASE_URL = "https://shqfklmsavgrfdkhlrof.supabase.co/rest/v1/test_todos";

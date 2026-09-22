@@ -1,0 +1,78 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #4f6ef7, #38b6ff 50%, #6f9bff);
+  background-attachment: fixed;
+  color: #1a1a2e;
+}
+
+.card {
+  width: 100%;
+  max-width: 480px;
+  margin: 40px 20px;
+  padding: 32px;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(20, 40, 100, 0.25);
+}
+
+.card h1 {
+  margin-top: 0;
+}
+
+.nav-links {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  gap: 16px;
+}
+
+.nav-links a {
+  color: #3457d5;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 10px 0;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.title.done {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.meta {
+  color: #888;
+  font-size: 0.85em;
+}
+
+#status {
+  color: #888;
+}
